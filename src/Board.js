@@ -47,7 +47,7 @@ function Board({ nrows = 7, ncols = 7, chanceLightStartsOn = 0.5 }) {
 
   function hasWon() {
     // TODO: check the board in state to determine whether the player has won.
-    return board.every((row) => row.every((cell) => !cell));
+    return board.every((row) => row.every((cell) => !cell)); // if all cells are gray
   }
 
   function flipCellsAround(coord) {
@@ -95,10 +95,11 @@ function Board({ nrows = 7, ncols = 7, chanceLightStartsOn = 0.5 }) {
       let coord = `${x}-${y}`;
       col.push(<Cell key={coord} isLit={board[x][y]} flipCellsAroundMe={() => flipCellsAround(coord)} />);
     }
-    tableBoard.push(<tr key={y}>{col}</tr>);
+    tableBoard.push(<tr key={y}>{col}</tr>); // make the table rows & fill with col coords
   }
   return (
     <>
+      {/* final output */}
       <h1>Lights Out</h1>
       <p>How to win? make all cells gray</p>
       <table className='Board'>
